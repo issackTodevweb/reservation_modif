@@ -1,0 +1,557 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: #ffffff;
+    display: flex;
+}
+
+.sidebar {
+    width: 240px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.user-profile:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.user-profile i {
+    font-size: 2.2em;
+    color: #1e40af;
+    transition: transform 0.3s ease;
+}
+
+.user-profile:hover i {
+    transform: scale(1.1);
+}
+
+.user-profile span {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1e40af;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.nav-menu a i {
+    font-size: 1.3em;
+    color: #1e40af;
+}
+
+.nav-menu a span {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    background: #f97316;
+    color: #ffffff;
+    transform: translateX(8px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-menu a:hover i {
+    color: #ffffff;
+}
+
+.nav-menu a.active {
+    background: #f97316;
+    color: #ffffff;
+}
+
+.nav-menu a.active i {
+    color: #ffffff;
+}
+
+.nav-menu a.logout {
+    margin-top: auto;
+    background: #f97316;
+    color: #ffffff;
+}
+
+.nav-menu a.logout i {
+    color: #ffffff;
+}
+
+.nav-menu a.logout:hover {
+    background: #ea580c;
+    transform: translateX(8px);
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 240px;
+    background: url('../../images/sailboat-sea-evening-sunlight-beautiful-sea-luxury-summer-adventure-active-vacation-mediterranean-sea-turkey.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: calc(100% - 240px);
+}
+
+.overlay {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.overlay h1,
+.overlay p,
+.overlay .dashboard-stats,
+.overlay .daily-report {
+    position: relative;
+    z-index: 2;
+}
+
+.overlay h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-out;
+}
+
+.overlay p {
+    font-size: 1.3em;
+    line-height: 1.6;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.2s ease-out 0.2s;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: calc(var(--order) * 0.1s);
+}
+
+.stat-card:nth-child(1) { --order: 1; }
+.stat-card:nth-child(2) { --order: 2; }
+.stat-card:nth-child(3) { --order: 3; }
+.stat-card:nth-child(4) { --order: 4; }
+.stat-card:nth-child(5) { --order: 5; }
+.stat-card:nth-child(6) { --order: 6; }
+.stat-card:nth-child(7) { --order: 7; }
+.stat-card:nth-child(8) { --order: 8; }
+.stat-card:nth-child(9) { --order: 9; }
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.stat-card i {
+    font-size: 2.5em;
+    color: #1e40af;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    font-size: 1em;
+    color: #cccccc;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.daily-report {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.2s ease-out 0.4s;
+}
+
+.daily-report h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.daily-report h3 {
+    font-size: 1.4em;
+    margin: 20px 0 10px;
+    color: #f97316;
+}
+
+.daily-report table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.daily-report th,
+.daily-report td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.daily-report th {
+    background: #1e40af;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.daily-report td {
+    color: #ffffff;
+}
+
+.daily-report tr:hover {
+    background: rgba(249, 115, 22, 0.2);
+    transition: background 0.3s ease;
+}
+
+.daily-report p {
+    font-size: 1.2em;
+    color: #cccccc;
+    text-align: center;
+    padding: 20px;
+    background: none;
+    box-shadow: none;
+}
+
+.date-filter {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-filter label {
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+.date-filter select,
+.date-filter input[type="date"],
+.date-filter input[type="month"],
+.date-filter input[type="number"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-size: 1em;
+}
+
+.date-filter input[type="number"] {
+    width: 100px;
+}
+
+.date-filter button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #f97316;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.date-filter button:hover {
+    background: #ea580c;
+}
+
+.export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #1e40af;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+}
+
+.export-btn:hover {
+    background: #1e3a8a;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    .overlay h1 {
+        font-size: 2.6em;
+    }
+
+    .overlay p {
+        font-size: 1.2em;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-card h2 {
+        font-size: 1.8em;
+    }
+
+    .daily-report table {
+        min-width: 500px;
+    }
+
+    .chart-container {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .user-profile {
+        justify-content: center;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .nav-menu a {
+        flex: 1 1 45%;
+        text-align: center;
+    }
+
+    .nav-menu a.logout {
+        margin-top: 8px;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .daily-report table {
+        font-size: 0.9em;
+        min-width: 100%;
+    }
+
+    .chart-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-profile i {
+        font-size: 1.8em;
+    }
+
+    .user-profile span {
+        font-size: 1.1em;
+    }
+
+    .nav-menu a i {
+        font-size: 1.2em;
+    }
+
+    .nav-menu a span {
+        font-size: 0.9em;
+    }
+
+    .overlay h1 {
+        font-size: 2em;
+    }
+
+    .overlay p {
+        font-size: 1em;
+    }
+
+    .stat-card {
+        padding: 10px;
+    }
+
+    .stat-card i {
+        font-size: 2em;
+    }
+
+    .stat-card h2 {
+        font-size: 1.5em;
+    }
+
+    .stat-card p {
+        font-size: 0.9em;
+    }
+
+    .daily-report h2 {
+        font-size: 1.6em;
+    }
+
+    .daily-report h3 {
+        font-size: 1.2em;
+    }
+
+    .daily-report table {
+        font-size: 0.8em;
+    }
+
+    .daily-report th,
+    .daily-report td {
+        padding: 8px;
+    }
+
+    .date-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .date-filter select,
+    .date-filter input[type="date"],
+    .date-filter input[type="month"],
+    .date-filter input[type="number"] {
+        width: 100%;
+    }
+
+    .date-filter button {
+        width: 100%;
+    }
+
+    .export-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
