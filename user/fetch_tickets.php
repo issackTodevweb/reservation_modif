@@ -14,7 +14,7 @@ try {
         exit;
     }
 
-    if (!in_array($ticket_type, ['GM', 'MG', 'GA', 'AM', 'MA'])) {
+    if (!in_array($ticket_type, ['GM', 'MG', 'GA', 'AM', 'MA', 'AG'])) {
         error_log("fetch_tickets: Erreur - Type de ticket invalide: " . $ticket_type);
         echo json_encode(['error' => 'Type de ticket invalide']);
         exit;

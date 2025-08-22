@@ -41,7 +41,7 @@ try {
     error_log("get_amount: trip_type=$trip_type");
 
     // Récupérer les tarifs depuis la table finances
-    $finance_stmt = $pdo->prepare("SELECT tariff, port_fee, tax FROM finances WHERE passenger_type = ? AND trip_type = ?");
+    $finance_stmt = $pdo->prepare("SELECT tariff, port_fee, tax FROM finances WHERE passenger_type = ? AND trip_type = ? AND direction = 'Aller'");
     $finance_stmt->execute([$passenger_type, $trip_type]);
     $finance = $finance_stmt->fetch(PDO::FETCH_ASSOC);
 

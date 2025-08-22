@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reservation'])
     $payment_status = $_POST['payment_status'];
     $modification = trim($_POST['modification']);
     $penalty = trim($_POST['penalty']);
-    $total_amount = floatval($_POST['total_amount']); // Récupérer le montant total du formulaire
+    $total_amount = floatval($_POST['total_amount']);
 
     // Déterminer le type de trajet
     $trip_stmt = $pdo->prepare("SELECT departure_port, arrival_port FROM trips WHERE id = ?");
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reservation'])
         $trip_type = $is_hors_standard ? 'Hors Standard' : 'Standard';
 
         // Vérifier le montant total dans la table finances
-        $finance_stmt = $pdo->prepare("SELECT tariff, port_fee, tax FROM finances WHERE passenger_type = ? AND trip_type = ?");
+        $finance_stmt = $pdo->prepare("SELECT tariff, port_fee, tax FROM finances WHERE passenger_type = ? AND trip_type = ? AND direction = 'Aller'");
         $finance_stmt->execute([$passenger_type, $trip_type]);
         $finance = $finance_stmt->fetch(PDO::FETCH_ASSOC);
         $calculated_total_amount = $finance ? ($finance['tariff'] + $finance['port_fee'] + $finance['tax']) : 0;
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reservation'])
                 $errors[] = "Le ticket sélectionné est déjà utilisé.";
             }
         }
-        if (!in_array($ticket_type, ['GM', 'MG', 'GA', 'AM', 'MA'])) {
+        if (!in_array($ticket_type, ['GM', 'MG', 'GA', 'AM', 'MA', 'AG'])) {
             $errors[] = "Type de ticket invalide.";
         }
         $seat_stmt = $pdo->prepare("SELECT status FROM seats WHERE trip_id = ? AND seat_number = ?");
@@ -227,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reservation'])
                     <input type="hidden" name="reference_id" value="<?php echo $next_reference_id; ?>">
                     <input type="hidden" name="ticket_id" id="ticket_id" value="<?php echo $next_ticket_id; ?>">
                     <input type="hidden" name="seat_number" id="seat_number">
-                    <input type="hidden" name="total_amount" id="form_total_amount"> <!-- Champ caché pour total_amount -->
+                    <input type="hidden" name="total_amount" id="form_total_amount">
                     <div class="form-group">
                         <label for="passenger_name">Nom du Passager</label>
                         <input type="text" name="passenger_name" id="passenger_name" required>
@@ -270,6 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reservation'])
                             <option value="GA">GA</option>
                             <option value="AM">AM</option>
                             <option value="MA">MA</option>
+                            <option value="AG">AG</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -165,15 +165,17 @@ try {
             JOIN reference ref ON r.reference_id = ref.id
             JOIN tickets tk ON r.ticket_id = tk.id
             LEFT JOIN finances f ON r.passenger_type = f.passenger_type AND
-                ((t.departure_port = 'ANJ' OR t.arrival_port = 'ANJ') AND f.trip_type = 'ANJ-MWA' OR
-                 (t.departure_port != 'ANJ' AND t.arrival_port != 'ANJ' AND f.trip_type = 'Standard'))
+                f.trip_type = CASE 
+                    WHEN (t.departure_port = 'ANJ' OR t.arrival_port = 'ANJ') THEN 'Hors Standard'
+                    ELSE 'Standard'
+                END AND f.direction = 'Aller'
             WHERE r.user_id = ? $where_clause
             ORDER BY r.departure_date DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    $_SESSION['error'] = "Erreur lors de la récupération des réservations. Veuillez réessayer.";
+    $_SESSION['error'] = "Erreur lors de la récupération des réservations : " . $e->getMessage();
     header("Location: list_reservations.php");
     exit();
 }

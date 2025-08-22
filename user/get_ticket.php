@@ -6,7 +6,7 @@ $pdo = getConnection();
 
 $ticket_type = isset($_POST['ticket_type']) ? $_POST['ticket_type'] : '';
 
-if (!in_array($ticket_type, ['GM', 'MG', 'GA', 'AM', 'MA'])) {
+if (!in_array($ticket_type, ['GM', 'MG', 'GA', 'AM', 'MA', 'AG'])) {
     echo json_encode(['ticket_id' => null, 'ticket_number' => null]);
     exit;
 }

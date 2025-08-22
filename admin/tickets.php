@@ -121,7 +121,7 @@ $years = range(2020, 2030);
             <a href="tickets.php" class="active"><i class="fas fa-ticket"></i><span>Gestion des Tickets</span></a>
             <a href="references.php"><i class="fas fa-barcode"></i><span>Références</span></a>
             <a href="info_passagers.php"><i class="fas fa-user-friends"></i><span>Infos Passagers</span></a>
-
+            <a href="../ticket.php"><i class="fas fa-ticket-alt"></i> Tickets</a>
             <a href="../chat.php"><i class="fas fa-comments"></i><span>Chat de Groupe</span></a>
             <a href="../auth/logout.php" class="logout"><i class="fas fa-sign-out-alt"></i><span>Se Déconnecter</span></a>
         </nav>
@@ -144,6 +144,7 @@ $years = range(2020, 2030);
                             <option value="GA">GA</option>
                             <option value="AM">AM</option>
                             <option value="MA">MA</option>
+                            <option value="AG">AG</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -237,6 +238,7 @@ $years = range(2020, 2030);
                             <option value="GA">GA</option>
                             <option value="AM">AM</option>
                             <option value="MA">MA</option>
+                            <option value="AG">AG</option>
                         </select>
                     </div>
                     <div class="form-group">
