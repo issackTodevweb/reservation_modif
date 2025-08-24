@@ -208,7 +208,7 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
         .ticket-modal-content {
             background: #ffffff;
             margin: 5% auto;
-            padding: 5px;
+            padding: 10px;
             border-radius: 8px;
             width: 80%;
             max-width: 500px;
@@ -218,107 +218,97 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
         .ticket {
             width: 100%;
             background: #ffffff;
-            border: 1px solid #ddd;
             border-radius: 6px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto auto auto auto;
-            gap: 2px;
-            padding: 5px;
+            padding: 10px;
             font-family: 'Helvetica', sans-serif;
-            font-size: 9px;
-        }
-        .section {
-            padding: 3px;
-            border: 1px solid #e5e5e5;
-            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
         }
-        .section-1a {
-            grid-column: 1 / 2;
-            grid-row: 1 / 2;
-            text-align: center;
-        }
-        .section-1a img {
-            width: 100%;
+        .logo {
+            max-width: 150px;
             height: auto;
-            max-height: 40px;
+            margin-bottom: 5px;
         }
-        .section-1b {
-            grid-column: 2 / 3;
-            grid-row: 1 / 2;
-            text-align: center;
-            justify-content: center;
+        .contact-info {
+            font-size: 10px;
+            color: #333;
+            margin-bottom: 5px;
         }
-        .section-1b h1 {
-            font-size: 11px;
+        .ticket h1 {
+            font-size: 16px;
             color: #1e40af;
-            margin-bottom: 2px;
+            margin: 5px 0;
             font-weight: bold;
         }
-        .section-1b p {
-            font-size: 9px;
-            color: #333;
+        .ticket-columns {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 5px 0;
         }
-        .section-2a, .section-2b, .section-3a, .section-3b, .section-4a {
-            font-size: 9px;
-            padding: 3px;
-        }
-        .section-2a {
-            grid-column: 1 / 2;
-            grid-row: 2 / 3;
-        }
-        .section-2b {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
-        }
-        .section-3a {
-            grid-column: 1 / 2;
-            grid-row: 3 / 4;
-        }
-        .section-3b {
-            grid-column: 2 / 3;
-            grid-row: 3 / 4;
-        }
-        .section-4a {
-            grid-column: 1 / 3;
-            grid-row: 4 / 5;
-        }
-        .section-4 {
-            grid-column: 1 / 3;
-            grid-row: 5 / 6;
+        .column-left, .column-right {
+            width: 48%;
             text-align: left;
-            font-size: 9px;
-            color: #333;
-            padding: 3px;
-            border-top: 1px solid #e0e0e0;
         }
-        .section p {
-            margin: 0.5px 0;
+        .column-left p, .column-right p {
+            margin: 3px 0;
+            font-size: 12px;
             color: #333;
         }
-        .section p strong {
+        .column-left p strong, .column-right p strong {
             color: #1e40af;
-            font-size: 9px;
+            font-size: 12px;
         }
-        .section p .translation {
-            font-size: 7px;
+        .column-left p .translation, .column-right p .translation {
+            font-size: 10px;
             color: #666;
             font-style: italic;
-            margin-top: 0.3px;
+            display: block;
+            margin-top: 1px;
+        }
+        .conditions {
+            width: 100%;
+            text-align: left;
+            font-size: 11px;
+            color: #333;
+            margin-top: 10px;
+        }
+        .conditions h3 {
+            font-size: 12px;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+        .conditions p {
+            margin: 3px 0;
+        }
+        .conditions ul {
+            margin: 3px 0 3px 20px;
+            padding: 0;
+            list-style-type: disc;
+        }
+        .conditions ul li {
+            margin-bottom: 2px;
+        }
+        .conditions p .translation, .conditions ul .translation {
+            font-size: 10px;
+            color: #666;
+            font-style: italic;
+            display: block;
+            margin-top: 1px;
         }
         .print-btn, .pdf-btn {
             cursor: pointer;
             display: inline-block;
             margin: 5px 4px;
-            padding: 4px 10px;
+            padding: 6px 12px;
             background: #f97316;
             color: #ffffff;
             border: none;
             border-radius: 4px;
-            font-size: 8px;
+            font-size: 10px;
             z-index: 1002;
             pointer-events: auto;
         }
@@ -330,7 +320,7 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
             position: absolute;
             top: 4px;
             right: 8px;
-            font-size: 14px;
+            font-size: 16px;
             color: #333;
             z-index: 1003;
             pointer-events: auto;
@@ -353,7 +343,7 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             .ticket-modal-content {
                 margin: 0;
-                padding: 2mm;
+                padding: 3mm;
                 border: none;
                 box-shadow: none;
                 width: 190mm;
@@ -361,49 +351,73 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
                 position: relative;
                 top: 0;
                 left: 0;
-                transform: translate(0, 0);
                 box-sizing: border-box;
                 page-break-after: avoid;
             }
             .ticket {
                 border: none;
                 box-shadow: none;
-                font-size: 9px;
-                gap: 1mm;
-                padding: 2mm;
+                font-size: 12px;
+                padding: 3mm;
                 width: 100%;
                 box-sizing: border-box;
-                transform: scale(0.85);
-                transform-origin: top left;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
-            .section-1a img {
-                max-height: 10mm;
+            .logo {
+                max-width: 40mm;
+                height: auto;
+                margin-bottom: 2mm;
             }
-            .section-1b h1 {
+            .contact-info {
+                font-size: 10px;
+                margin-bottom: 2mm;
+            }
+            .ticket h1 {
+                font-size: 16px;
+                margin-bottom: 2mm;
+            }
+            .ticket-columns {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin: 2mm 0;
+            }
+            .column-left, .column-right {
+                width: 48%;
+            }
+            .column-left p, .column-right p {
+                font-size: 12px;
+                margin: 1mm 0;
+            }
+            .column-left p strong, .column-right p strong {
+                font-size: 12px;
+            }
+            .column-left p .translation, .column-right p .translation {
+                font-size: 10px;
+                margin-top: 0.5mm;
+            }
+            .conditions {
                 font-size: 11px;
+                margin-top: 2mm;
+            }
+            .conditions h3 {
+                font-size: 12px;
+                margin-bottom: 2mm;
+            }
+            .conditions p {
+                margin: 1mm 0;
+            }
+            .conditions ul {
+                margin: 1mm 0 1mm 5mm;
+            }
+            .conditions ul li {
                 margin-bottom: 1mm;
             }
-            .section-1b p {
-                font-size: 9px;
-            }
-            .section-2a, .section-2b, .section-3a, .section-3b, .section-4a {
-                font-size: 9px;
-                padding: 1mm;
-            }
-            .section p {
-                margin: 0.3mm 0;
-            }
-            .section p strong {
-                font-size: 9px;
-            }
-            .section p .translation {
-                font-size: 7px;
-                margin-top: 0.2mm;
-            }
-            .section-4 {
-                font-size: 9px;
-                padding: 1mm;
-                line-height: 1.1;
+            .conditions p .translation, .conditions ul .translation {
+                font-size: 10px;
+                margin-top: 0.5mm;
             }
             .print-btn, .pdf-btn, .ticket-close {
                 display: none;
@@ -415,20 +429,35 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         @media (max-width: 600px) {
             .ticket {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(8, auto);
+                font-size: 11px;
             }
-            .section-1a, .section-1b, .section-2a, .section-2b, .section-3a, .section-3b, .section-4a, .section-4 {
-                grid-column: 1 / 2;
+            .logo {
+                max-width: 120px;
             }
-            .section-1a { grid-row: 1 / 2; }
-            .section-1b { grid-row: 2 / 3; }
-            .section-2a { grid-row: 3 / 4; }
-            .section-2b { grid-row: 4 / 5; }
-            .section-3a { grid-row: 5 / 6; }
-            .section-3b { grid-row: 6 / 7; }
-            .section-4a { grid-row: 7 / 8; }
-            .section-4 { grid-row: 8 / 9; }
+            .contact-info {
+                font-size: 9px;
+            }
+            .ticket h1 {
+                font-size: 14px;
+            }
+            .column-left p, .column-right p {
+                font-size: 11px;
+            }
+            .column-left p strong, .column-right p strong {
+                font-size: 11px;
+            }
+            .column-left p .translation, .column-right p .translation {
+                font-size: 9px;
+            }
+            .conditions {
+                font-size: 10px;
+            }
+            .conditions h3 {
+                font-size: 11px;
+            }
+            .conditions p .translation, .conditions ul .translation {
+                font-size: 9px;
+            }
         }
     </style>
 </head>
@@ -681,395 +710,408 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="ticket-modal-content">
                     <span class="ticket-close">&times;</span>
                     <div class="ticket">
-                        <div class="section section-1a">
-                            <img src="../images/ACX.png" alt="Adore Comores Express Logo">
+                        <img src="../images/ACX.png" alt="Adore Comores Express Logo" class="logo">
+                        <p class="contact-info">Gde Comores : +269 320 72 13 | Moheli : +269 320 72 18 | Anjouan : +269 320 72 19 | Direction : +269 320 72 23</p>
+                        <h1>Billet Ferry Rapide</h1>
+                        <div class="ticket-columns">
+                            <div class="column-left">
+                                <p><strong>Numéro de Billet :</strong> <span id="ticket_number"></span><br><span class="translation">Ticket Number</span></p>
+                                <p><strong>Date de Voyage :</strong> <span id="departure_date"></span><br><span class="translation">Travel Date</span></p>
+                                <p><strong>Nom du Passager :</strong> <span id="passenger_name"></span><br><span class="translation">Passenger Name</span></p>
+                                <p><strong>Route :</strong> <span id="route"></span><br><span class="translation">Route</span></p>
+                                <p><strong>Nationalité :</strong> <span id="nationality"></span><br><span class="translation">Nationality</span></p>
+                                <p><strong>Téléphone :</strong> <span id="phone_number"></span><br><span class="translation">Phone Number</span></p>
+                                <p><strong>Type de Billet :</strong> <span id="ticket_type"></span><br><span class="translation">Ticket Type</span></p>
+                                <p><strong>Avec Bébé ? :</strong> <span id="with_baby"></span><br><span class="translation">With Baby?</span></p>
+                            </div>
+                            <div class="column-right">
+                                <p><strong>Enregistrement en Ville :</strong> Moroni, 2h avant départ<br><span class="translation">City Check-in: Moroni, 2 hours before departure</span></p>
+                                <p><strong>Enregistrement au Port :</strong> Port de Moroni, 1h avant départ<br><span class="translation">Port Check-in: Moroni Port, 1 hour before departure</span></p>
+                                <p><strong>Départ du Bateau :</strong> <span id="departure_time"></span><br><span class="translation">Boat Departure</span></p>
+                                <p><strong>Numéro de Reçu :</strong> <span id="reference_number"></span><br><span class="translation">Receipt Number</span></p>
+                                <p><strong>Tarif :</strong> <span id="tariff"></span> KMF<br><span class="translation">Fare</span></p>
+                                <p><strong>Taxe :</strong> <span id="tax"></span> KMF<br><span class="translation">Tax</span></p>
+                                <p><strong>Frais de Port :</strong> <span id="port_fee"></span> KMF<br><span class="translation">Port Fee</span></p>
+                                <p><strong>Total à Payer :</strong> <span id="total_amount"></span> KMF<br><span class="translation">Total to Pay</span></p>
+                                <p><strong>Modification :</strong> <span id="modification"></span><br><span class="translation">Modification</span></p>
+                                <p><strong>Pénalité :</strong> <span id="penalty"></span><br><span class="translation">Penalty</span></p>
+                            </div>
                         </div>
-                        <div class="section section-1b">
-                            <h1>Billet Ferry Rapide</h1>
-                            <p>Fast Ferry Ticket</p>
+                        <div class="conditions">
+                            <h3>Conditions Générales de Transport</h3>
+                            <p><strong>Billet nominatif :</strong> Non cessible, non transférable sans accord du transporteur (Art. 686).<br>
+                            <span class="translation">Non-transferable ticket: Not transferable without carrier’s consent (Art. 686).</span></p>
+                            <p><strong>Modifications :</strong></p>
+                            <ul>
+                                <li>Changement de nom : 10 000 KMF<br><span class="translation">Name change: 10,000 KMF</span></li>
+                                <li>Changement date/heure : 5 000 KMF<br><span class="translation">Date/time change: 5,000 KMF</span></li>
+                            </ul>
+                            <p><strong>Embarquement :</strong> Le passager doit se présenter à l’heure indiquée. Tout retard est considéré comme "No Show", équivalent à une annulation le jour même → 100 % de retenue, aucun remboursement. (Art. 688)<br>
+                            <span class="translation">Boarding: Passenger must arrive on time. Any delay is considered a "No Show," equivalent to a same-day cancellation → 100% retained, no refund (Art. 688).</span></p>
+                            <p><strong>Annulation par le passager :</strong></p>
+                            <ul>
+                                <li>Avant 72h : 25 % retenus<br><span class="translation">More than 72h: 25% retained</span></li>
+                                <li>Entre 72h et 24h : 50 % retenus<br><span class="translation">Between 72h and 24h: 50% retained</span></li>
+                                <li>Moins de 24h ou No Show : 100 % retenus<br><span class="translation">Less than 24h or No Show: 100% retained</span></li>
+                            </ul>
+                            <p><strong>Objets interdits :</strong> Drogue, armes, briquets, objets inflammables, etc. → Interdiction stricte.<br>
+                            <span class="translation">Prohibited items: Drugs, weapons, lighters, flammable items, etc. → Strictly prohibited.</span></p>
+                            <p><strong>Objets de valeur :</strong> À déclarer obligatoirement à l’enregistrement. Le transporteur décline toute responsabilité en cas de non-déclaration.<br>
+                            <span class="translation">Valuables: Must be declared at check-in. The carrier assumes no liability for undeclared items.</span></p>
+                            <p><strong>Bagages :</strong></p>
+                            <ul>
+                                <li>Franchise incluse : 20 kg en soute + 5 kg en bagage à main par passager.<br>
+                                <span class="translation">Included allowance: 20 kg checked luggage + 5 kg carry-on per passenger.</span></li>
+                                <li>En cas de perte, une déclaration écrite doit être faite immédiatement auprès du commandant lors du débarquement. Aucune réclamation ne sera acceptée après.<br>
+                                <span class="translation">In case of loss, a written declaration must be made immediately to the captain upon disembarkation. No claims accepted afterward.</span></li>
+                                <li>Le transporteur pourra, en cas de perte avérée, indemniser jusqu’à un maximum de 100 000 KMF par passager, quelle que soit la nature ou la valeur déclarée du bagage.<br>
+                                <span class="translation">In case of confirmed loss, the carrier may compensate up to a maximum of 100,000 KMF per passenger, regardless of the nature or declared value of the luggage.</span></li>
+                                <li>Cette indemnisation est soumise à vérification et ne sera accordée qu'en cas de perte réelle confirmée. Toute tentative de fraude ou de fausse déclaration entraînera des poursuites conformément à la loi (Art. 689).<br>
+                                <span class="translation">This compensation is subject to verification and will only be granted for confirmed losses. Any attempt at fraud or false declaration will result in legal action (Art. 689).</span></li>
+                            </ul>
+                            <p><strong>Accès à bord :</strong> Sans billet ou numéro d’embarquement, aucun accès ne sera autorisé.<br>
+                            <span class="translation">Boarding: No access allowed without a ticket or boarding number.</span></p>
+                            <p><strong>Important ! :</strong> En achetant ce billet, le passager accepte toutes les conditions ci-dessus.<br>
+                            <span class="translation">Important: By purchasing this ticket, the passenger accepts all the above conditions.</span></p>
+                            <p><strong>Code de la Marine Comorienne – Articles 686, 688, 689</strong></p>
                         </div>
-                        <div class="section section-2a">
-                            <p><strong>Numéro de Billet :</strong> <span id="ticket_number"></span><br><span class="translation">Ticket Number</span></p>
-                            <p><strong>Date de Voyage :</strong> <span id="departure_date"></span><br><span class="translation">Travel Date</span></p>
-                            <p><strong>Nom du Passager :</strong> <span id="passenger_name"></span><br><span class="translation">Passenger Name</span></p>
-                            <p><strong>Route :</strong> <span id="route"></span><br><span class="translation">Route</span></p>
-                        </div>
-                        <div class="section section-2b">
-                            <p><strong>Nationalité :</strong> <span id="nationality"></span><br><span class="translation">Nationality</span></p>
-                            <p><strong>Téléphone :</strong> <span id="phone_number"></span><br><span class="translation">Phone Number</span></p>
-                            <p><strong>Type de Billet :</strong> <span id="ticket_type"></span><br><span class="translation">Ticket Type</span></p>
-                            <p><strong>Avec Bébé ? :</strong> <span id="with_baby"></span><br><span class="translation">With Baby?</span></p>
-                        </div>
-                        <div class="section section-3a">
-                            <p><strong>Enregistrement en Ville :</strong> Moroni, 2h avant départ<br><span class="translation">City Check-in: Moroni, 2 hours before departure</span></p>
-                            <p><strong>Enregistrement au Port :</strong> Port de Moroni, 1h avant départ<br><span class="translation">Port Check-in: Moroni Port, 1 hour before departure</span></p>
-                            <p><strong>Départ du Bateau :</strong> <span id="departure_time"></span><br><span class="translation">Boat Departure</span></p>
-                        </div>
-                        <div class="section section-3b">
-                            <p><strong>Numéro de Reçu :</strong> <span id="reference_number"></span><br><span class="translation">Receipt Number</span></p>
-                            <p><strong>Tarif :</strong> <span id="tariff"></span> KMF<br><span class="translation">Fare</span></p>
-                            <p><strong>Taxe :</strong> <span id="tax"></span> KMF<br><span class="translation">Tax</span></p>
-                            <p><strong>Frais de Port :</strong> <span id="port_fee"></span> KMF<br><span class="translation">Port Fee</span></p>
-                            <p><strong>Total à Payer :</strong> <span id="total_amount"></span> KMF<br><span class="translation">Total to Pay</span></p>
-                        </div>
-                        <div class="section section-4a">
-                            <p><strong>Modification :</strong> <span id="modification"></span><br><span class="translation">Modification</span></p>
-                            <p><strong>Pénalité :</strong> <span id="penalty"></span><br><span class="translation">Penalty</span></p>
-                        </div>
-                        <div class="section section-4">
-                            <p><strong>Conditions Générales / General Conditions:</strong><br>
-                            Billet nominatif : Non cessible sans accord du transporteur (Art. 686).<br>
-                            <span class="translation">Non-transferable ticket: Not transferable without carrier’s consent.</span><br>
-                            <strong>Modifications / Changes:</strong><br>
-                            • Nom / Name: 10 000 KMF<br>
-                            • Date/heure / Date or time: 5 000 KMF<br>
-                            <strong>Embarquement / Boarding:</strong><br>
-                            Le passager doit arriver à l’heure. Retard = No Show = Annulation sans remboursement (100 %, Art. 688).<br>
-                            <span class="translation">Passenger must arrive on time. Delay = No Show = Cancellation with no refund (100%).</span><br>
-                            <strong>Annulation / Cancellation:</strong><br>
-                            • Plus de 72h / More than 72h: 25 % retenus<br>
-                            • 72h – 24h: 50 % retenus<br>
-                            • Moins de 24h ou No Show / Less than 24h or No Show: 100 % retenus<br>
-                            <strong>Ports de départ / Departure ports:</strong><br>
-                            Mohéli: Hoani – Anjouan: Dodin – Grande Comore: Ouroveni<br>
-                            (Transferts inclus: Moroni-Ouroveni, Fomboni-Hoani)<br>
-                            <strong>Objets interdits / Prohibited items:</strong> Drogues, armes, briquets, produits inflammables.<br>
-                            <span class="translation">Prohibited items: Drugs, weapons, lighters, flammable products.</span><br>
-                            <strong>Objets de valeur / Valuables:</strong> Déclaration obligatoire à l’enregistrement. Non déclarés = aucune responsabilité.<br>
-                            <span class="translation">Valuables: Mandatory declaration at check-in. Undeclared = no liability.</span><br>
-                            <strong>Bagages / Luggage:</strong> En cas de perte, déclaration immédiate au commandant. Aucune réclamation après débarquement.<br>
-                            <span class="translation">Luggage: In case of loss, immediate declaration to the captain. No claims after disembarkation.</span><br>
-                            <strong>Accès à bord / Boarding:</strong> Interdit sans billet ou numéro d’embarquement.<br>
-                            <span class="translation">Boarding: Prohibited without ticket or boarding number.</span><br>
-                            <strong>Acceptation / Acceptance:</strong> L’achat du billet vaut acceptation de toutes ces conditions (Art. 686, 688, 689).<br>
-                            <span class="translation">Acceptance: Purchase of the ticket implies acceptance of all these conditions (Art. 686, 688, 689).</span>
-                            </p>
-                        </div>
+                        <button class="print-btn" onclick="printTicket()">Imprimer</button>
+                        <button class="pdf-btn" onclick="exportToPDF()">Exporter en PDF</button>
                     </div>
-                    <button class="print-btn" onclick="printTicket()">Imprimer le Ticket</button>
-                    <button class="pdf-btn" onclick="exportToPDF()">Exporter en PDF</button>
                 </div>
             </div>
-        </div>
-    </main>
-    <script src="../styles/js/user_list_reservations.js?v=<?php echo time(); ?>"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Script ticket modal chargé');
-            const ticketModal = document.getElementById('ticketModal');
-            const ticketClose = document.querySelector('.ticket-close');
-            const viewTicketButtons = document.querySelectorAll('.view-ticket-btn');
-            const editModal = document.getElementById('editReservationModal');
-            const editClose = document.querySelector('#editReservationModal .modal-close');
-            const editButtons = document.querySelectorAll('.edit-btn');
-            viewTicketButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    console.log(`Bouton Voir le Ticket cliqué pour la réservation ID: ${button.dataset.id}`);
-                    document.getElementById('ticket_number').textContent = button.dataset.ticketNumber;
-                    document.getElementById('departure_date').textContent = button.dataset.departureDate;
-                    document.getElementById('passenger_name').textContent = button.dataset.passengerName;
-                    document.getElementById('route').textContent = `${button.dataset.departurePort} -> ${button.dataset.arrivalPort}`;
-                    document.getElementById('nationality').textContent = button.dataset.nationality;
-                    document.getElementById('phone_number').textContent = button.dataset.phoneNumber;
-                    document.getElementById('ticket_type').textContent = button.dataset.ticketType;
-                    document.getElementById('with_baby').textContent = button.dataset.withBaby;
-                    document.getElementById('departure_time').textContent = `${button.dataset.departureDate} ${button.dataset.departureTime}`;
-                    document.getElementById('reference_number').textContent = button.dataset.referenceNumber;
-                    document.getElementById('tariff').textContent = button.dataset.tariff;
-                    document.getElementById('tax').textContent = button.dataset.tax;
-                    document.getElementById('port_fee').textContent = button.dataset.portFee;
-                    document.getElementById('total_amount').textContent = button.dataset.totalAmount;
-                    document.getElementById('modification').textContent = button.dataset.modification;
-                    document.getElementById('penalty').textContent = button.dataset.penalty;
-                    ticketModal.style.display = 'block';
-                    console.log('Modale de ticket affichée');
+        </main>
+        <script src="../styles/js/user_list_reservations.js?v=<?php echo time(); ?>"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log('Script ticket modal chargé');
+                const ticketModal = document.getElementById('ticketModal');
+                const ticketClose = document.querySelector('.ticket-close');
+                const viewTicketButtons = document.querySelectorAll('.view-ticket-btn');
+                const editModal = document.getElementById('editReservationModal');
+                const editClose = document.querySelector('#editReservationModal .modal-close');
+                const editButtons = document.querySelectorAll('.edit-btn');
+                viewTicketButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        console.log(`Bouton Voir le Ticket cliqué pour la réservation ID: ${button.dataset.id}`);
+                        document.getElementById('ticket_number').textContent = button.dataset.ticketNumber;
+                        document.getElementById('departure_date').textContent = button.dataset.departureDate;
+                        document.getElementById('passenger_name').textContent = button.dataset.passengerName;
+                        document.getElementById('route').textContent = `${button.dataset.departurePort} -> ${button.dataset.arrivalPort}`;
+                        document.getElementById('nationality').textContent = button.dataset.nationality;
+                        document.getElementById('phone_number').textContent = button.dataset.phoneNumber;
+                        document.getElementById('ticket_type').textContent = button.dataset.ticketType;
+                        document.getElementById('with_baby').textContent = button.dataset.withBaby;
+                        document.getElementById('departure_time').textContent = `${button.dataset.departureDate} ${button.dataset.departureTime}`;
+                        document.getElementById('reference_number').textContent = button.dataset.referenceNumber;
+                        document.getElementById('tariff').textContent = button.dataset.tariff;
+                        document.getElementById('tax').textContent = button.dataset.tax;
+                        document.getElementById('port_fee').textContent = button.dataset.portFee;
+                        document.getElementById('total_amount').textContent = button.dataset.totalAmount;
+                        document.getElementById('modification').textContent = button.dataset.modification;
+                        document.getElementById('penalty').textContent = button.dataset.penalty;
+                        ticketModal.style.display = 'block';
+                        console.log('Modale de ticket affichée');
+                    });
                 });
-            });
-            ticketClose.addEventListener('click', () => {
-                ticketModal.style.display = 'none';
-                console.log('Modale de ticket fermée');
-            });
-            editButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    document.getElementById('edit_id').value = button.dataset.id;
-                    document.getElementById('edit_passenger_name').value = button.dataset.passengerName;
-                    document.getElementById('edit_phone_number').value = button.dataset.phoneNumber;
-                    document.getElementById('edit_nationality').value = button.dataset.nationality;
-                    document.getElementById('edit_passenger_type').value = button.dataset.passengerType;
-                    document.getElementById('edit_with_baby').value = button.dataset.withBaby;
-                    document.getElementById('edit_departure_date').value = button.dataset.departureDate;
-                    document.getElementById('edit_trip_id').value = button.dataset.tripId;
-                    document.getElementById('edit_seat_number').value = button.dataset.seatNumber;
-                    document.getElementById('edit_original_seat_number').value = button.dataset.seatNumber;
-                    document.getElementById('edit_selected_seat').value = button.dataset.seatNumber;
-                    document.getElementById('edit_payment_status').value = button.dataset.paymentStatus;
-                    document.getElementById('edit_modification').value = button.dataset.modification;
-                    document.getElementById('edit_penalty').value = button.dataset.penalty;
-                    editModal.style.display = 'block';
-                });
-            });
-            editClose.addEventListener('click', () => {
-                editModal.style.display = 'none';
-                console.log('Modale de modification fermée');
-            });
-            window.addEventListener('click', (event) => {
-                if (event.target === ticketModal) {
+                ticketClose.addEventListener('click', () => {
                     ticketModal.style.display = 'none';
-                    console.log('Modale de ticket fermée via clic extérieur');
-                }
-                if (event.target === editModal) {
-                    editModal.style.display = 'none';
-                    console.log('Modale de modification fermée via clic extérieur');
-                }
-            });
-            window.printTicket = function() {
-                console.log('Bouton Imprimer cliqué');
-                window.print();
-            };
-            window.exportToPDF = function() {
-                console.log('Bouton Exporter en PDF cliqué');
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'mm',
-                    format: 'a4'
+                    console.log('Modale de ticket fermée');
                 });
-                const ticketData = {
-                    ticket_number: document.getElementById('ticket_number').textContent,
-                    departure_date: document.getElementById('departure_date').textContent,
-                    passenger_name: document.getElementById('passenger_name').textContent,
-                    route: document.getElementById('route').textContent,
-                    nationality: document.getElementById('nationality').textContent,
-                    phone_number: document.getElementById('phone_number').textContent,
-                    ticket_type: document.getElementById('ticket_type').textContent,
-                    with_baby: document.getElementById('with_baby').textContent,
-                    checkin_city: 'Moroni, 2h avant départ / City Check-in: Moroni, 2 hours before departure',
-                    checkin_port: 'Port de Moroni, 1h avant départ / Port Check-in: Moroni Port, 1 hour before departure',
-                    departure_time: document.getElementById('departure_time').textContent,
-                    reference_number: document.getElementById('reference_number').textContent,
-                    tariff: document.getElementById('tariff').textContent + ' KMF',
-                    tax: document.getElementById('tax').textContent + ' KMF',
-                    port_fee: document.getElementById('port_fee').textContent + ' KMF',
-                    total_amount: document.getElementById('total_amount').textContent + ' KMF',
-                    modification: document.getElementById('modification').textContent,
-                    penalty: document.getElementById('penalty').textContent,
-                    conditions: 'Billet nominatif : Non cessible sans accord du transporteur (Art. 686).\n' +
-                                'Non-transferable ticket: Not transferable without carrier’s consent.\n' +
-                                'Modifications / Changes:\n' +
-                                '• Nom / Name: 10 000 KMF\n' +
-                                '• Date/heure / Date or time: 5 000 KMF\n' +
-                                'Embarquement / Boarding:\n' +
-                                'Le passager doit arriver à l’heure. Retard = No Show = Annulation sans remboursement (100 %, Art. 688).\n' +
-                                'Passenger must arrive on time. Delay = No Show = Cancellation with no refund (100%).\n' +
-                                'Annulation / Cancellation:\n' +
-                                '• Plus de 72h / More than 72h: 25 % retenus\n' +
-                                '• 72h – 24h: 50 % retenus\n' +
-                                '• Moins de 24h ou No Show / Less than 24h or No Show: 100 % retenus\n' +
-                                'Ports de départ / Departure ports:\n' +
-                                'Mohéli: Hoani – Anjouan: Dodin – Grande Comore: Ouroveni\n' +
-                                '(Transferts inclus: Moroni-Ouroveni, Fomboni-Hoani)\n' +
-                                'Objets interdits / Prohibited items: Drogues, armes, briquets, produits inflammables.\n' +
-                                'Prohibited items: Drugs, weapons, lighters, flammable products.\n' +
-                                'Objets de valeur / Valuables: Déclaration obligatoire à l’enregistrement. Non déclarés = aucune responsabilité.\n' +
-                                'Valuables: Mandatory declaration at check-in. Undeclared = no liability.\n' +
-                                'Bagages / Luggage: En cas de perte, déclaration immédiate au commandant. Aucune réclamation après débarquement.\n' +
-                                'Luggage: In case of loss, immediate declaration to the captain. No claims after disembarkation.\n' +
-                                'Accès à bord / Boarding: Interdit sans billet ou numéro d’embarquement.\n' +
-                                'Boarding: Prohibited without ticket or boarding number.\n' +
-                                'Acceptation / Acceptance: L’achat du billet vaut acceptation de toutes ces conditions (Art. 686, 688, 689).\n' +
-                                'Acceptance: Purchase of the ticket implies acceptance of all these conditions (Art. 686, 688, 689).'
+                editButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        document.getElementById('edit_id').value = button.dataset.id;
+                        document.getElementById('edit_passenger_name').value = button.dataset.passengerName;
+                        document.getElementById('edit_phone_number').value = button.dataset.phoneNumber;
+                        document.getElementById('edit_nationality').value = button.dataset.nationality;
+                        document.getElementById('edit_passenger_type').value = button.dataset.passengerType;
+                        document.getElementById('edit_with_baby').value = button.dataset.withBaby;
+                        document.getElementById('edit_departure_date').value = button.dataset.departureDate;
+                        document.getElementById('edit_trip_id').value = button.dataset.tripId;
+                        document.getElementById('edit_seat_number').value = button.dataset.seatNumber;
+                        document.getElementById('edit_original_seat_number').value = button.dataset.seatNumber;
+                        document.getElementById('edit_selected_seat').value = button.dataset.seatNumber;
+                        document.getElementById('edit_payment_status').value = button.dataset.paymentStatus;
+                        document.getElementById('edit_modification').value = button.dataset.modification;
+                        document.getElementById('edit_penalty').value = button.dataset.penalty;
+                        editModal.style.display = 'block';
+                    });
+                });
+                editClose.addEventListener('click', () => {
+                    editModal.style.display = 'none';
+                    console.log('Modale de modification fermée');
+                });
+                window.addEventListener('click', (event) => {
+                    if (event.target === ticketModal) {
+                        ticketModal.style.display = 'none';
+                        console.log('Modale de ticket fermée via clic extérieur');
+                    }
+                    if (event.target === editModal) {
+                        editModal.style.display = 'none';
+                        console.log('Modale de modification fermée via clic extérieur');
+                    }
+                });
+                window.printTicket = function() {
+                    console.log('Bouton Imprimer cliqué');
+                    window.print();
                 };
-                const logoBase64 = 'data:image/png;base64,YOUR_BASE64_STRING_HERE'; // Remplacez par la chaîne base64 réelle
-                const pageWidth = 210;
-                const margin = 5;
-                const contentWidth = pageWidth - 2 * margin;
-                const colWidth = contentWidth / 2 - 2;
-                doc.addImage(logoBase64, 'PNG', margin, 5, 30, 10);
-                let y = 7;
-                doc.setFontSize(10);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Billet Ferry Rapide', margin + colWidth + 2, y, { align: 'center' });
-                y += 4;
-                doc.setFontSize(8);
-                doc.setFont('helvetica', 'normal');
-                doc.text('Fast Ferry Ticket', margin + colWidth + 2, y, { align: 'center' });
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Numéro de Billet: ' + ticketData.ticket_number, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Ticket Number', margin, y + 2);
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Date de Voyage: ' + ticketData.departure_date, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Travel Date', margin, y + 2);
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Nom du Passager: ' + ticketData.passenger_name, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Passenger Name', margin, y + 2);
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Route: ' + ticketData.route, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Route', margin, y + 2);
-                y += 5;
-                let yRight = 16;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Nationalité: ' + ticketData.nationality, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Nationality', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Téléphone: ' + ticketData.phone_number, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Phone Number', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Type de Billet: ' + ticketData.ticket_type, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Ticket Type', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Avec Bébé?: ' + ticketData.with_baby, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('With Baby?', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                y = Math.max(y, yRight);
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Enreg. Ville: ' + ticketData.checkin_city.split(' / ')[0], margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('City Check-in', margin, y + 2);
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Enreg. Port: ' + ticketData.checkin_port.split(' / ')[0], margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Port Check-in', margin, y + 2);
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Départ Bateau: ' + ticketData.departure_time, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Boat Departure', margin, y + 2);
-                y += 5;
-                yRight = Math.max(yRight, y - 15);
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Numéro Reçu: ' + ticketData.reference_number, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Receipt Number', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Tarif: ' + ticketData.tariff, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Fare', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Taxe: ' + ticketData.tax, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Tax', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Frais Port: ' + ticketData.port_fee, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Port Fee', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Total: ' + ticketData.total_amount, margin + colWidth + 4, yRight);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Total to Pay', margin + colWidth + 4, yRight + 2);
-                yRight += 5;
-                y = Math.max(y, yRight);
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Modification: ' + ticketData.modification, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Modification', margin, y + 2);
-                y += 5;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Pénalité: ' + ticketData.penalty, margin, y);
-                doc.setFontSize(7);
-                doc.setTextColor(102, 102, 102);
-                doc.setFont('helvetica', 'italic');
-                doc.text('Penalty', margin, y + 2);
-                y += 10;
-                doc.setFontSize(9);
-                doc.setTextColor(0, 0, 0);
-                doc.setFont('helvetica', 'normal');
-                const splitConditions = doc.splitTextToSize(ticketData.conditions, contentWidth);
-                doc.text(splitConditions, margin, y);
-                doc.save('ticket_' + ticketData.ticket_number + '.pdf');
-            };
-        });
-    </script>
-</body>
+                window.exportToPDF = function() {
+                    console.log('Bouton Exporter en PDF cliqué');
+                    try {
+                        const { jsPDF } = window.jspdf;
+                        if (!jsPDF) {
+                            console.error('jsPDF n\'est pas chargé');
+                            alert('Erreur : La bibliothèque jsPDF n\'est pas disponible.');
+                            return;
+                        }
+                        const doc = new jsPDF({
+                            orientation: 'portrait',
+                            unit: 'mm',
+                            format: 'a4'
+                        });
+                        const ticketData = {
+                            ticket_number: document.getElementById('ticket_number')?.textContent || 'N/A',
+                            departure_date: document.getElementById('departure_date')?.textContent || 'N/A',
+                            passenger_name: document.getElementById('passenger_name')?.textContent || 'N/A',
+                            route: document.getElementById('route')?.textContent || 'N/A',
+                            nationality: document.getElementById('nationality')?.textContent || 'N/A',
+                            phone_number: document.getElementById('phone_number')?.textContent || 'N/A',
+                            ticket_type: document.getElementById('ticket_type')?.textContent || 'N/A',
+                            with_baby: document.getElementById('with_baby')?.textContent || 'N/A',
+                            checkin_city: 'Moroni, 2h avant départ / City Check-in: Moroni, 2 hours before departure',
+                            checkin_port: 'Port de Moroni, 1h avant départ / Port Check-in: Moroni Port, 1 hour before departure',
+                            departure_time: document.getElementById('departure_time')?.textContent || 'N/A',
+                            reference_number: document.getElementById('reference_number')?.textContent || 'N/A',
+                            tariff: (document.getElementById('tariff')?.textContent || '0') + ' KMF',
+                            tax: (document.getElementById('tax')?.textContent || '0') + ' KMF',
+                            port_fee: (document.getElementById('port_fee')?.textContent || '0') + ' KMF',
+                            total_amount: (document.getElementById('total_amount')?.textContent || '0') + ' KMF',
+                            modification: document.getElementById('modification')?.textContent || 'Aucune',
+                            penalty: document.getElementById('penalty')?.textContent || 'Aucune',
+                            conditions: 'Conditions Générales de Transport\n' +
+                                        'Billet nominatif : Non cessible, non transférable sans accord du transporteur (Art. 686).\n' +
+                                        'Non-transferable ticket: Not transferable without carrier’s consent (Art. 686).\n' +
+                                        'Modifications :\n' +
+                                        '• Changement de nom : 10 000 KMF\n' +
+                                        '  Name change: 10,000 KMF\n' +
+                                        '• Changement date/heure : 5 000 KMF\n' +
+                                        '  Date/time change: 5,000 KMF\n' +
+                                        'Embarquement : Le passager doit se présenter à l’heure. Tout retard = "No Show",\n' + 
+                                        'annulation le jour même → 100 % retenu, non remboursé (Art. 688).\n' +
+                                        'Boarding: Arrive on time. Delay = "No Show,".\n' + 
+                                        'same-day cancellation → 100% retained, no refund (Art. 688).\n' +
+                                        'Annulation par le passager :\n' +
+                                        '• > 72h : 25 % retenus\n' +
+                                        '  More than 72h: 25% retained\n' +
+                                        '• 72h-24h : 50 % retenus\n' +
+                                        '  Between 72h-24h: 50% retained\n' +
+                                        '• < 24h/No Show : 100 % retenus\n' +
+                                        '  Less than 24h/No Show: 100% retained\n' +
+                                        'Objets interdits : Drogue, armes, briquets, inflammables, etc. → Interdiction stricte.\n' +
+                                        'Prohibited items: Drugs, weapons, lighters, flammable items, etc. → Strictly prohibited.\n' +
+                                        'Objets de valeur : Déclarer à l’enregistrement. Non déclaré = pas de responsabilité du transporteur.\n' +
+                                        'Valuables: Declare at check-in. Undeclared = no carrier liability.\n' +
+                                        'Bagages :\n' +
+                                        '• Franchise : 20 kg soute + 5 kg main par passager.\n' +
+                                        '  Allowance: 20 kg checked + 5 kg carry-on per passenger.\n' +
+                                        '• Perte : Déclarer immédiatement au commandant à l’arrivée. Pas de réclamation après.\n' +
+                                        '  Loss: Declare to captain upon arrival. No claims accepted afterward.\n' +
+                                        '• Perte confirmée : Indemnisation max. 100 000 KMF/passager, peu importe la valeur.\n' +
+                                        '  Confirmed loss: Max. 100,000 KMF/passenger, regardless of value.\n' +
+                                        '• Vérification requise. Fraude = poursuites (Art. 689).\n' +
+                                        '  Verification required. Fraud = legal action (Art. 689).\n' +
+                                        'Accès à bord : Billet/numéro d’embarquement requis.\n' +
+                                        'Boarding: Ticket/boarding number required.\n' +
+                                        'Important : L’achat du billet implique l’acceptation des conditions.\n' +
+                                        'Important: Ticket purchase implies acceptance of conditions.\n' +
+                                        'Code de la Marine Comorienne – Art. 686, 688, 689'
+                        };
+                        const pageWidth = 210;
+                        const margin = 5; // Augmenté pour plus d'espace
+                        const contentWidth = pageWidth - 2 * margin;
+                        let y = 10;
+                        doc.setFontSize(8); // Réduit pour contact-info
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'normal');
+                        doc.text('Gde Comores : +269 320 72 13 | Moheli : +269 320 72 18 | Anjouan : +269 320 72 19 | Direction : +269 320 72 23', pageWidth / 2, y, { align: 'center' });
+                        y += 5;
+                        doc.setFontSize(12);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Billet Ferry Rapide', pageWidth / 2, y, { align: 'center' });
+                        y += 6;
+                        doc.setFontSize(9); // Réduit pour le contenu principal
+                        doc.setTextColor(0, 0, 0);
+                        const leftColumnX = margin + 5;
+                        const rightColumnX = pageWidth / 2 + 5;
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Numéro de Billet: ' + ticketData.ticket_number, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Ticket Number', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Enreg. Ville: ' + ticketData.checkin_city.split(' / ')[0], rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('City Check-in', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Date de Voyage: ' + ticketData.departure_date, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Travel Date', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Enreg. Port: ' + ticketData.checkin_port.split(' / ')[0], rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Port Check-in', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Nom du Passager: ' + ticketData.passenger_name, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Passenger Name', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Départ Bateau: ' + ticketData.departure_time, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Boat Departure', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Route: ' + ticketData.route, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Route', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Numéro Reçu: ' + ticketData.reference_number, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Receipt Number', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Nationalité: ' + ticketData.nationality, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Nationality', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Tarif: ' + ticketData.tariff, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Fare', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Téléphone: ' + ticketData.phone_number, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Phone Number', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Taxe: ' + ticketData.tax, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Tax', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Type de Billet: ' + ticketData.ticket_type, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Ticket Type', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Frais Port: ' + ticketData.port_fee, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Port Fee', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Avec Bébé?: ' + ticketData.with_baby, leftColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('With Baby?', leftColumnX, y + 2, { align: 'left' });
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Total: ' + ticketData.total_amount, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Total to Pay', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Modification: ' + ticketData.modification, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Modification', rightColumnX, y + 2, { align: 'left' });
+                        y += 6;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Pénalité: ' + ticketData.penalty, rightColumnX, y, { align: 'left' });
+                        doc.setFontSize(7);
+                        doc.setTextColor(102, 102, 102);
+                        doc.setFont('helvetica', 'italic');
+                        doc.text('Penalty', rightColumnX, y + 2, { align: 'left' });
+                        y += 8;
+                        doc.setFontSize(9);
+                        doc.setTextColor(0, 0, 0);
+                        doc.setFont('helvetica', 'bold');
+                        doc.text('Conditions Générales de Transport', margin, y);
+                        y += 4;
+                        doc.setFontSize(8); // Réduit pour les conditions
+                        doc.setFont('helvetica', 'normal');
+                        const splitConditions = doc.splitTextToSize(ticketData.conditions, contentWidth);
+                        doc.text(splitConditions, margin, y, { align: 'left' });
+                        doc.save('ticket_' + ticketData.ticket_number + '.pdf');
+                    } catch (error) {
+                        console.error('Erreur lors de l\'exportation en PDF :', error);
+                        alert('Une erreur s\'est produite lors de la génération du PDF. Vérifiez la console pour plus de détails.');
+                    }
+                };
+            });
+        </script>
+    </body>
 </html>
 <?php $pdo = null; ?>
