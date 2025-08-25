@@ -725,8 +725,8 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <p><strong>Avec Bébé ? :</strong> <span id="with_baby"></span><br><span class="translation">With Baby?</span></p>
                             </div>
                             <div class="column-right">
-                                <p><strong>Enregistrement en Ville :</strong> Moroni, 2h avant départ<br><span class="translation">City Check-in: Moroni, 2 hours before departure</span></p>
-                                <p><strong>Enregistrement au Port :</strong> Port de Moroni, 1h avant départ<br><span class="translation">Port Check-in: Moroni Port, 1 hour before departure</span></p>
+                                <p><strong>Enregistrement en Ville :</strong> 2h avant départ<br><span class="translation">City Check-in: 2 hours before departure</span></p>
+                                <p><strong>Enregistrement au Port :</strong> 1h avant départ<br><span class="translation">Port Check-in:1 hour before departure</span></p>
                                 <p><strong>Départ du Bateau :</strong> <span id="departure_time"></span><br><span class="translation">Boat Departure</span></p>
                                 <p><strong>Numéro de Reçu :</strong> <span id="reference_number"></span><br><span class="translation">Receipt Number</span></p>
                                 <p><strong>Tarif :</strong> <span id="tariff"></span> KMF<br><span class="translation">Fare</span></p>
@@ -878,8 +878,8 @@ $trips = $trips_stmt->fetchAll(PDO::FETCH_ASSOC);
                             phone_number: document.getElementById('phone_number')?.textContent || 'N/A',
                             ticket_type: document.getElementById('ticket_type')?.textContent || 'N/A',
                             with_baby: document.getElementById('with_baby')?.textContent || 'N/A',
-                            checkin_city: 'Moroni, 2h avant départ / City Check-in: Moroni, 2 hours before departure',
-                            checkin_port: 'Port de Moroni, 1h avant départ / Port Check-in: Moroni Port, 1 hour before departure',
+                            checkin_city: '2h avant départ / City Check-in: 2 hours before departure',
+                            checkin_port: '1h avant départ / Port Check-in: 1 hour before departure',
                             departure_time: document.getElementById('departure_time')?.textContent || 'N/A',
                             reference_number: document.getElementById('reference_number')?.textContent || 'N/A',
                             tariff: (document.getElementById('tariff')?.textContent || '0') + ' KMF',

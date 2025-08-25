@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -33,11 +34,11 @@ $report_year = isset($_POST['report_year']) ? $_POST['report_year'] : date('Y');
 
 // Déterminer le titre du rapport
 if ($report_period === 'daily') {
-    $report_title = "Rapport Journalier - " . date('d/m/Y', strtotime($report_date));
+    $report_title = "Réservations effectuées le " . date('d/m/Y', strtotime($report_date));
 } elseif ($report_period === 'monthly') {
-    $report_title = "Rapport Mensuel - " . date('m/Y', strtotime($report_month));
+    $report_title = "Réservations effectuées en " . date('m/Y', strtotime($report_month));
 } else {
-    $report_title = "Rapport Annuel - " . $report_year;
+    $report_title = "Réservations effectuées en " . $report_year;
 }
 
 // Récupérer le nom d'utilisateur
@@ -52,7 +53,7 @@ try {
         exit();
     }
     $username = $user['username'];
-    $report_title .= " - $username";
+    $report_title .= " par $username";
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Erreur lors de la récupération de l\'utilisateur']);
@@ -70,7 +71,7 @@ try {
                                   WHEN t.departure_port = 'ANJ' AND t.arrival_port = 'MWA' THEN 'ANJ-MWA'
                                   ELSE 'Standard'
                                   END) = f.trip_type
-                             WHERE r.user_id = ? AND r.departure_date = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
+                             WHERE r.user_id = ? AND DATE(r.created_at) = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
         $stmt_reservations = $pdo->prepare($sql_reservations);
         $stmt_reservations->execute([$user_id, $report_date]);
     } elseif ($report_period === 'monthly') {
@@ -82,7 +83,7 @@ try {
                                   WHEN t.departure_port = 'ANJ' AND t.arrival_port = 'MWA' THEN 'ANJ-MWA'
                                   ELSE 'Standard'
                                   END) = f.trip_type
-                             WHERE r.user_id = ? AND DATE_FORMAT(r.departure_date, '%Y-%m') = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
+                             WHERE r.user_id = ? AND DATE_FORMAT(r.created_at, '%Y-%m') = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
         $stmt_reservations = $pdo->prepare($sql_reservations);
         $stmt_reservations->execute([$user_id, $report_month]);
     } else { // yearly
@@ -94,7 +95,7 @@ try {
                                   WHEN t.departure_port = 'ANJ' AND t.arrival_port = 'MWA' THEN 'ANJ-MWA'
                                   ELSE 'Standard'
                                   END) = f.trip_type
-                             WHERE r.user_id = ? AND YEAR(r.departure_date) = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
+                             WHERE r.user_id = ? AND YEAR(r.created_at) = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
         $stmt_reservations = $pdo->prepare($sql_reservations);
         $stmt_reservations->execute([$user_id, $report_year]);
     }
@@ -150,7 +151,7 @@ try {
                             WHEN t.departure_port = 'ANJ' AND t.arrival_port = 'MWA' THEN 'ANJ-MWA'
                             ELSE 'Standard'
                             END) = f.trip_type
-                       WHERE r.user_id = ? AND r.departure_date = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
+                       WHERE r.user_id = ? AND DATE(r.created_at) = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
         $stmt_totals = $pdo->prepare($sql_totals);
         $stmt_totals->execute([$user_id, $report_date]);
     } elseif ($report_period === 'monthly') {
@@ -168,7 +169,7 @@ try {
                             WHEN t.departure_port = 'ANJ' AND t.arrival_port = 'MWA' THEN 'ANJ-MWA'
                             ELSE 'Standard'
                             END) = f.trip_type
-                       WHERE r.user_id = ? AND DATE_FORMAT(r.departure_date, '%Y-%m') = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
+                       WHERE r.user_id = ? AND DATE_FORMAT(r.created_at, '%Y-%m') = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
         $stmt_totals = $pdo->prepare($sql_totals);
         $stmt_totals->execute([$user_id, $report_month]);
     } else { // yearly
@@ -186,7 +187,7 @@ try {
                             WHEN t.departure_port = 'ANJ' AND t.arrival_port = 'MWA' THEN 'ANJ-MWA'
                             ELSE 'Standard'
                             END) = f.trip_type
-                       WHERE r.user_id = ? AND YEAR(r.departure_date) = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
+                       WHERE r.user_id = ? AND YEAR(r.created_at) = ? AND r.payment_status != 'Annulé' AND r.payment_status != ''";
         $stmt_totals = $pdo->prepare($sql_totals);
         $stmt_totals->execute([$user_id, $report_year]);
     }
